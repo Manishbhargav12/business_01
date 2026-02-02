@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <link rel="icon" href="media\VM1fcpu2bKs1e2Kdbj\love_icon-icons.com_67808.ico" type="image/x-icon"> </head>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="352c7074-be3e-407a-b40e-f2dd3838fa3f"></script>
+    <style>
+        body {
+            background-color: #ffc8fd;
+            font-family: 'Comic Sans MS', cursive;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: none;
+
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1.2em;
+        }
+
+        /* #generatedLink {
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        #linkField {
+            width: 80%;
+            padding: 10px;
+            font-size: 1.2em;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-top: 10px;
+            background-color: #f0f0f0;
+            cursor: not-allowed;
+            color: #666;
+        } */
+                /* .file-input {
+                    display: flex;
+                    /* justify-content: center; 
+                    align-items: center;
+                    margin-left: 30% ;
+                    padding-left: 59%;
+                    justify-content: space-between;
+                 */
+
+        /* .file-label {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background-color: #ff6b6b;
+            color: white;
+            font-size: 1.2em;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        } */
+
+        /* .file-label:hover {
+            background-color: #ff5252; /* Darker shade on hover 
+        } */
+        #photos {
+            width: 60%;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: none;
+            /* background-color: #ff5252; */
+            }
+            #video {
+            width: 60%;
+            padding: 10px;
+            margin: 5px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            border: none;
+            /* background-color: #ff5252; */
+            }
+
+.file-text{
+  flex: 1;
+  padding: 8px 12px;
+  color: #777;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.file-btn{
+  padding: 0 16px;
+  background: #f5f5f5;
+  border-left: 1px solid #ccc;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+}
+
+.file-btn:hover{
+  background:#eee;
+}
+    h4 {
+        color: #ff6b6b;
+        font-size: 1em;
+        margin: 0px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Names</h1>
+        <input type="text" id="yourName" placeholder="Your Name">
+        <input type="text" id="baeName" placeholder="Partner's Name">
+        <input type="text" id="meetingPlace" placeholder="First Meeting Place">
+        <input type="text" id="anniversaryDate" placeholder="anniversary yyyy-mm-dd">
+        <input type="file" id="photos" accept="image/*" multiple>
+        <h4>Upload up to 5 photos for the album</h4>
+        <div id="preview"></div>
+        <input type="file" id="video" accept="video/*">
+        <h4>Upload one video</h4>
+        
+        
+        
+        <br>
+
+        <!-- <label for="imageInput" class="file-label">Choose Image</label>
+        <input type="file" id="imageInput" accept="image/*" class="file-input">
+
+        <label for="videoInput" class="file-label">Choose Video</label>
+        <input type="file" id="videoInput" accept="video/*" class="file-input"> -->
+        <br>
+        <button onclick="window.location.href='greeting.html'">Submit</button>
+        <!-- <p id="generatedLink">Share link to your bae:</p> -->
+        <!-- <input type="text" id="linkField" readonly> -->
+        <br>
+        <!-- <button onclick="copyLink()">Copy  -->
+        <!-- <button onclick="copyLink()">Copy Link</button> -->
+        <button onclick="window.location.href='greeting.html'">Preview Greeting Card</button>
+        <button onclick="window.location.href='purpose.html'">Preview Purpose</button>
+        <button onclick="window.location.href='album.html'">Preview Album</button>
+        
+    </div>  
+<!-- media\VM -->
+    <script>
+        function generateLink() {
+            const yourName = document.getElementById('yourName').value;
+            const baeName = document.getElementById('baeName').value;
+
+            if (yourName && baeName) {
+                const link = `https://vt.shizuka.my.id/valentine.html?from=${encodeURIComponent(yourName)}&to=${encodeURIComponent(baeName)}`;
+                document.getElementById('linkField').value = link;
+                document.getElementById('generatedLink').style.display = 'block';
+            } else {
+                alert('Please enter both names!');
+            }
+        }
+
+const generatorState = {
+    photos: [],
+    video: null
+};
+
+const photoInput = document.getElementById("photos");
+const preview = document.getElementById("preview");
+
+photoInput.addEventListener("change", () => {
+    const files = Array.from(photoInput.files);
+    preview.innerHTML = "";
+    
+  if (files.length > 5) {
+    alert("Max 5 photos only");
+    photoInput.value = "";
+    return;
+  }
+
+  generatorState.photos = files;
+  files.forEach(file => {
+      const img = document.createElement("img");
+      img.src = URL.createObjectURL(file);
+      img.style.width = "120px";
+      img.onload = () => URL.revokeObjectURL(img.src);
+      preview.appendChild(img);
+    });
+});
+const videoInput = document.getElementById("video");
+
+videoInput.addEventListener("change", () => {
+  generatorState.video = videoInput.files[0] || null;
+  console.log(generatorState);
+
+});
+
+
+
+    </script>
+
+</body>
+</html>
